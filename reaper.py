@@ -25,7 +25,8 @@ def connect_to_remote_driver(host, port):
 
 @atexit.register
 def clean():
-    driver.close()
+    if 'driver' in globals():
+        driver.close()
 
 def get_cookies(cookie_file):
     if os.path.exists(cookie_file):
